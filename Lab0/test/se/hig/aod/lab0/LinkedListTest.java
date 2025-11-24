@@ -6,21 +6,20 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 class LinkedListTest {
 
 	private LinkedList<Integer> listUnderTest;
-	private final int[] fixture = {1, 2, 3, 4, 5};
-	
+	private final int[] fixture = { 1, 2, 3, 4, 5 };
+
 	/**
-	 * Resets list to a new empty LinkedList-instance
-	 * before each test method is executed.
+	 * Resets list to a new empty LinkedList-instance before each test method is
+	 * executed.
 	 * 
 	 * @throws Exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		listUnderTest = new LinkedList<Integer>(); 
+		listUnderTest = new LinkedList<Integer>();
 	}
 
 	/**
@@ -40,7 +39,7 @@ class LinkedListTest {
 	public void testEmptyListIsEmpty() {
 		assertTrue(listUnderTest.isEmpty(), "An empty list instance should not contain any item");
 	}
-	
+
 	/**
 	 * Test method for {@link se.hig.aod.lab0.LinkedList#isEmpty()}.
 	 */
@@ -49,7 +48,7 @@ class LinkedListTest {
 		initializeList();
 		assertFalse(listUnderTest.isEmpty(), "A list instance containing elements should not be empty");
 	}
-	
+
 	/**
 	 * Test method for {@link se.hig.aod.lab0.LinkedList#clear()}.
 	 */
@@ -58,18 +57,17 @@ class LinkedListTest {
 		listUnderTest.clear();
 		assertTrue(listUnderTest.isEmpty(), "An empty list instance that is cleared should not contain any item");
 	}
-	
+
 	/*
 	 * Skriv fler test-metoder själv........................
 	 */
-	
+
 	/**
 	 * Test method for numberOfElements() on empty list.
 	 */
 	@Test
 	public void testNumberOfElementsOnEmptyList() {
-		assertEquals(0, listUnderTest.numberOfElements(),
-				"Empty list should contain 0 elements");
+		assertEquals(0, listUnderTest.numberOfElements(), "Empty list should contain 0 elements");
 	}
 
 	/**
@@ -90,8 +88,7 @@ class LinkedListTest {
 		initializeList();
 		listUnderTest.clear();
 		assertTrue(listUnderTest.isEmpty(), "Cleared list should be empty");
-		assertEquals(0, listUnderTest.numberOfElements(),
-				"Cleared list should contain 0 elements");
+		assertEquals(0, listUnderTest.numberOfElements(), "Cleared list should contain 0 elements");
 	}
 
 	/**
@@ -103,8 +100,7 @@ class LinkedListTest {
 		assertFalse(listUnderTest.isEmpty(), "List should not be empty after insertFirst");
 		assertEquals(1, listUnderTest.numberOfElements(),
 				"List should contain 1 element after insertFirst on empty list");
-		assertEquals(10, listUnderTest.getFirst(),
-				"First element should be the one just inserted");
+		assertEquals(10, listUnderTest.getFirst(), "First element should be the one just inserted");
 	}
 
 	/**
@@ -112,11 +108,10 @@ class LinkedListTest {
 	 */
 	@Test
 	public void testInsertFirstOnInitializedList() {
-		initializeList();              // [1, 2, 3, 4, 5]
+		initializeList(); // [1, 2, 3, 4, 5]
 		listUnderTest.insertFirst(99); // [99, 1, 2, 3, 4, 5]
 
-		assertEquals(99, listUnderTest.getFirst(),
-				"First element should be the one inserted at the front");
+		assertEquals(99, listUnderTest.getFirst(), "First element should be the one inserted at the front");
 		assertEquals(fixture.length + 1, listUnderTest.numberOfElements(),
 				"List size should increase by 1 after insertFirst");
 	}
@@ -130,10 +125,8 @@ class LinkedListTest {
 		assertFalse(listUnderTest.isEmpty(), "List should not be empty after insertLast");
 		assertEquals(1, listUnderTest.numberOfElements(),
 				"List should contain 1 element after insertLast on empty list");
-		assertEquals(20, listUnderTest.getFirst(),
-				"First element should be the one just inserted");
-		assertEquals(20, listUnderTest.getLast(),
-				"Last element should be the one just inserted");
+		assertEquals(20, listUnderTest.getFirst(), "First element should be the one just inserted");
+		assertEquals(20, listUnderTest.getLast(), "Last element should be the one just inserted");
 	}
 
 	/**
@@ -141,34 +134,33 @@ class LinkedListTest {
 	 */
 	@Test
 	public void testInsertLastOnInitializedList() {
-		initializeList();               // [1, 2, 3, 4, 5]
-		listUnderTest.insertLast(99);   // [1, 2, 3, 4, 5, 99]
+		initializeList(); // [1, 2, 3, 4, 5]
+		listUnderTest.insertLast(99); // [1, 2, 3, 4, 5, 99]
 
-		assertEquals(1, listUnderTest.getFirst(),
-				"First element should stay the same after insertLast");
-		assertEquals(99, listUnderTest.getLast(),
-				"Last element should be the one inserted at the end");
+		assertEquals(1, listUnderTest.getFirst(), "First element should stay the same after insertLast");
+		assertEquals(99, listUnderTest.getLast(), "Last element should be the one inserted at the end");
 		assertEquals(fixture.length + 1, listUnderTest.numberOfElements(),
 				"List size should increase by 1 after insertLast");
 	}
-	
+
 	/**
 	 * Test method for {@link se.hig.aod.lab0.LinkedList#getFirst()}.
 	 */
 	@Test
 	public void testGetFirstOnEmptyList() {
-		assertThrows(ListEmptyException.class, () -> listUnderTest.getFirst() , "GetFirst() on empty list should throw ListEmptyException");
+		assertThrows(ListEmptyException.class, () -> listUnderTest.getFirst(),
+				"GetFirst() on empty list should throw ListEmptyException");
 	}
-	
+
 	/**
 	 * Test method for {@link se.hig.aod.lab0.LinkedList#getFirst()}.
 	 */
 	@Test
 	public void testGetFirstOnInitializedList() {
 		initializeList();
-		assertEquals(1, listUnderTest.getFirst() , "GetFirst() should return first element in list");
+		assertEquals(1, listUnderTest.getFirst(), "GetFirst() should return first element in list");
 	}
-	
+
 	/*
 	 * Skriv fler test-metoder själv........................
 	 */
@@ -178,8 +170,7 @@ class LinkedListTest {
 	 */
 	@Test
 	public void testGetLastOnEmptyList() {
-		assertThrows(ListEmptyException.class,
-				() -> listUnderTest.getLast(),
+		assertThrows(ListEmptyException.class, () -> listUnderTest.getLast(),
 				"getLast() on empty list should throw ListEmptyException");
 	}
 
@@ -189,8 +180,7 @@ class LinkedListTest {
 	@Test
 	public void testGetLastOnInitializedList() {
 		initializeList();
-		assertEquals(5, listUnderTest.getLast(),
-				"getLast() should return last element in list");
+		assertEquals(5, listUnderTest.getLast(), "getLast() should return last element in list");
 	}
 
 	/**
@@ -198,8 +188,7 @@ class LinkedListTest {
 	 */
 	@Test
 	public void testRemoveFirstOnEmptyList() {
-		assertThrows(ListEmptyException.class,
-				() -> listUnderTest.removeFirst(),
+		assertThrows(ListEmptyException.class, () -> listUnderTest.removeFirst(),
 				"removeFirst() on empty list should throw ListEmptyException");
 	}
 
@@ -208,12 +197,11 @@ class LinkedListTest {
 	 */
 	@Test
 	public void testRemoveFirstOnInitializedList() {
-		initializeList();              // [1, 2, 3, 4, 5]
+		initializeList(); // [1, 2, 3, 4, 5]
 		int removed = listUnderTest.removeFirst(); // [2, 3, 4, 5]
 
 		assertEquals(1, removed, "removeFirst() should return the first element");
-		assertEquals(2, listUnderTest.getFirst(),
-				"New first element should be the second element from original list");
+		assertEquals(2, listUnderTest.getFirst(), "New first element should be the second element from original list");
 		assertEquals(fixture.length - 1, listUnderTest.numberOfElements(),
 				"List size should decrease by 1 after removeFirst()");
 	}
@@ -223,8 +211,7 @@ class LinkedListTest {
 	 */
 	@Test
 	public void testRemoveLastOnEmptyList() {
-		assertThrows(ListEmptyException.class,
-				() -> listUnderTest.removeLast(),
+		assertThrows(ListEmptyException.class, () -> listUnderTest.removeLast(),
 				"removeLast() on empty list should throw ListEmptyException");
 	}
 
@@ -233,60 +220,57 @@ class LinkedListTest {
 	 */
 	@Test
 	public void testRemoveLastOnInitializedList() {
-		initializeList();                // [1, 2, 3, 4, 5]
+		initializeList(); // [1, 2, 3, 4, 5]
 		int removed = listUnderTest.removeLast(); // [1, 2, 3, 4]
 
 		assertEquals(5, removed, "removeLast() should return the last element");
-		assertEquals(1, listUnderTest.getFirst(),
-				"First element should remain unchanged after removeLast()");
-		assertEquals(4, listUnderTest.getLast(),
-				"New last element should be the element before the removed one");
+		assertEquals(1, listUnderTest.getFirst(), "First element should remain unchanged after removeLast()");
+		assertEquals(4, listUnderTest.getLast(), "New last element should be the element before the removed one");
 		assertEquals(fixture.length - 1, listUnderTest.numberOfElements(),
 				"List size should decrease by 1 after removeLast()");
 	}
-	
+
 	private void initializeList() {
 		for (int i = 0; i < fixture.length; i++) {
 			listUnderTest.insertLast(fixture[i]);
 		}
 	}
-	
-    /**
-     * Test toStringRecursive() on empty list.
-     */
-    @Test
-    public void testToStringRecursiveOnEmptyList() {
-        assertEquals("[]", listUnderTest.toStringRecursive(),
-                "toStringRecursive() on empty list should return []");
-    }
 
-    /**
-     * Test toStringRecursive() on initialized list.
-     */
-    @Test
-    public void testToStringRecursiveOnInitializedList() {
-        initializeList(); // [1, 2, 3, 4, 5]
-        assertEquals("[1, 2, 3, 4, 5]", listUnderTest.toStringRecursive(),
-                "toStringRecursive() should return elements in insertion order");
-    }
+	/**
+	 * Test toStringRecursive() on empty list.
+	 */
+	@Test
+	public void testToStringRecursiveOnEmptyList() {
+		assertEquals("[]", listUnderTest.toStringRecursive(), "toStringRecursive() on empty list should return []");
+	}
 
-    /**
-     * Test toStringReverseRecursive() on empty list.
-     */
-    @Test
-    public void testToStringReverseRecursiveOnEmptyList() {
-        assertEquals("[]", listUnderTest.toStringReverseRecursive(),
-                "toStringReverseRecursive() on empty list should return []");
-    }
+	/**
+	 * Test toStringRecursive() on initialized list.
+	 */
+	@Test
+	public void testToStringRecursiveOnInitializedList() {
+		initializeList(); // [1, 2, 3, 4, 5]
+		assertEquals("[1, 2, 3, 4, 5]", listUnderTest.toStringRecursive(),
+				"toStringRecursive() should return elements in insertion order");
+	}
 
-    /**
-     * Test toStringReverseRecursive() on initialized list.
-     */
-    @Test
-    public void testToStringReverseRecursiveOnInitializedList() {
-        initializeList(); // [1, 2, 3, 4, 5]
-        assertEquals("[5, 4, 3, 2, 1]", listUnderTest.toStringReverseRecursive(),
-                "toStringReverseRecursive() should return elements in reverse order");
-    }
+	/**
+	 * Test toStringReverseRecursive() on empty list.
+	 */
+	@Test
+	public void testToStringReverseRecursiveOnEmptyList() {
+		assertEquals("[]", listUnderTest.toStringReverseRecursive(),
+				"toStringReverseRecursive() on empty list should return []");
+	}
+
+	/**
+	 * Test toStringReverseRecursive() on initialized list.
+	 */
+	@Test
+	public void testToStringReverseRecursiveOnInitializedList() {
+		initializeList(); // [1, 2, 3, 4, 5]
+		assertEquals("[5, 4, 3, 2, 1]", listUnderTest.toStringReverseRecursive(),
+				"toStringReverseRecursive() should return elements in reverse order");
+	}
 
 }
